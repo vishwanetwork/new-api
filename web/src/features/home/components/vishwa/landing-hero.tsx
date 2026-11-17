@@ -126,7 +126,7 @@ export function LandingHero(props: { isAuthenticated: boolean }) {
                 <div className='space-hero-actions'>
                   <Link
                     className='lp-button lp-primary'
-                    to={props.isAuthenticated ? '/dashboard' : '/sign-up'}
+                    to={props.isAuthenticated ? '/dashboard' : '/sign-in'}
                   >
                     {props.isAuthenticated
                       ? t('Go to Dashboard')

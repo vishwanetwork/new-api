@@ -64,7 +64,7 @@ export function VishwaLanding(props: { isAuthenticated: boolean }) {
             <h2>{t('Build what comes next.')}</h2>
             <Link
               className='lp-button lp-primary'
-              to={props.isAuthenticated ? '/dashboard' : '/sign-up'}
+              to={props.isAuthenticated ? '/dashboard' : '/sign-in'}
             >
               {props.isAuthenticated
                 ? t('Go to Dashboard')
