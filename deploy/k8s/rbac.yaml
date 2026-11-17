@@ -1,0 +1,16 @@
+# One-time setup, applied by a cluster admin (not by the release workflow).
+# Lets the GitHub Actions role `vishwa-deploy` (EKS access entry group
+# `vishwa-deployer`) manage workloads in the `opennext` namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: vishwa-deployer
+  namespace: opennext
+subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: vishwa-deployer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: edit
