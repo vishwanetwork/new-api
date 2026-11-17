@@ -125,7 +125,7 @@ describe('theme preference persistence', () => {
 
     expect(screen.getByLabelText('Theme mode')).toHaveTextContent('system')
     expect(document.documentElement).toHaveClass('light')
-    expect(document.body).not.toHaveAttribute('data-theme-preset')
+    expect(document.body).toHaveAttribute('data-theme-preset', 'vishwa')
     expect(document.body).toHaveAttribute('data-theme-font', 'system')
     expect(document.body).not.toHaveAttribute('data-theme-radius')
     expect(document.body).not.toHaveAttribute('data-theme-scale')
@@ -171,7 +171,7 @@ describe('theme preference persistence', () => {
 
     expect(screen.getByLabelText('Theme mode')).toHaveTextContent('system')
     expect(document.documentElement).toHaveClass('light')
-    expect(document.body).not.toHaveAttribute('data-theme-preset')
+    expect(document.body).toHaveAttribute('data-theme-preset', 'vishwa')
     expect(document.body).toHaveAttribute('data-theme-font', 'system')
     expect(document.body).not.toHaveAttribute('data-theme-radius')
     expect(document.body).not.toHaveAttribute('data-theme-scale')
@@ -193,7 +193,7 @@ describe('theme preference persistence', () => {
       render(<ThemeFixture />)
 
       expect(screen.getByLabelText('Theme mode')).toHaveTextContent('system')
-      expect(document.body).not.toHaveAttribute('data-theme-preset')
+      expect(document.body).toHaveAttribute('data-theme-preset', 'vishwa')
       expect(document.body).toHaveAttribute('data-theme-font', 'system')
       expect(document.body).not.toHaveAttribute('data-theme-radius')
       expect(document.body).not.toHaveAttribute('data-theme-scale')
@@ -209,7 +209,7 @@ describe('theme preference persistence', () => {
     render(<ThemeFixture />)
 
     expect(screen.getByLabelText('Theme mode')).toHaveTextContent('system')
-    expect(document.body).not.toHaveAttribute('data-theme-preset')
+    expect(document.body).toHaveAttribute('data-theme-preset', 'vishwa')
   })
 
   it('still applies and resets preferences when storage writes fail', async () => {
@@ -230,6 +230,21 @@ describe('theme preference persistence', () => {
     await user.click(screen.getByRole('button', { name: 'Reset' }))
 
     expect(screen.getByLabelText('Theme mode')).toHaveTextContent('system')
+    expect(document.body).toHaveAttribute('data-theme-preset', 'vishwa')
+  })
+
+  it('keeps the neutral palette after remounting when the default preset is chosen', async () => {
+    const user = userEvent.setup()
+    const first = render(<ThemeFixture />)
+
+    await user.click(screen.getByRole('button', { name: 'Default preset' }))
+
+    expect(document.body).not.toHaveAttribute('data-theme-preset')
+    expect(localStorage.getItem('newapi:theme:v1:preset')).toBe('default')
+
+    first.unmount()
+    render(<ThemeFixture />)
+
     expect(document.body).not.toHaveAttribute('data-theme-preset')
   })
 

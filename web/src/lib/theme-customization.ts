@@ -25,6 +25,13 @@ For commercial licensing, please contact support@quantumnous.com
 
 export const THEME_PRESETS = [
   {
+    // Vishwa Gateway brand palette: neutral near-black canvas with a
+    // silver-white primary. This is the preset the app starts with.
+    value: 'vishwa',
+    name: 'Vishwa',
+    swatches: ['#0c0d0e', '#d6dadb'],
+  },
+  {
     value: 'default',
     name: 'Default',
     swatches: ['oklch(0.72 0.18 250)', 'oklch(0.7 0.12 280)'],
@@ -112,7 +119,7 @@ export type ThemeCustomization = {
 }
 
 export const DEFAULT_THEME_CUSTOMIZATION: ThemeCustomization = {
-  preset: 'default',
+  preset: 'vishwa',
   font: 'default',
   radius: 'default',
   scale: 'default',
