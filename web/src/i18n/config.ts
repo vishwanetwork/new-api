@@ -53,7 +53,9 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     detection: {
-      order: ['localStorage', 'navigator'],
+      // English by default: only an explicit choice (cached in localStorage)
+      // switches language; the browser locale is not consulted.
+      order: ['localStorage'],
       caches: ['localStorage'],
       // Browsers report `zh-CN`/`zh-TW`/`zh`; map them onto our `zhCN`/`zhTW`
       // codes (non-Chinese codes pass through for normal supportedLngs matching).

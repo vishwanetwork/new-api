@@ -18,10 +18,10 @@ For commercial licensing, please contact support@quantumnous.com
 */
 import '@/styles/vishwa/brand.css'
 
-/** OpenNEXT wordmark with the Gateway product name. */
+/** OpenNEXT wordmark. */
 export function VishwaBrand() {
   return (
-    <span className='vg-brand-lockup' aria-label='OpenNEXT Gateway'>
+    <span className='vg-brand-lockup' aria-label='OpenNEXT'>
       <img
         className='vg-brand-wordmark'
         src='/vishwa/opennext-logo-white.svg'
@@ -29,7 +29,6 @@ export function VishwaBrand() {
         width='260'
         height='52'
       />
-      <span className='vg-brand-product'>Gateway</span>
     </span>
   )
 }
