@@ -1,0 +1,102 @@
+Provider wordmark sources
+The names and marks identify model providers only.
+
+public/provider-logos/openai.svg
+Asset: OpenAI white wordmark
+Official reference: https://openai.com/brand/
+Source: https://cdn.openai.com/brand/OpenAI-Logos-2025.zip
+Archive member: OpenAI-logos(new)/SVGs/OpenAI-white-wordmark.svg. Unmodified.
+Intrinsic dimensions: 1604 x 719; viewBox: 0 0 1604 719
+SHA-256: 169b683855ef7a431e5a996d01406da76bb206eb777546d29e53613a8d08fb3a
+
+public/provider-logos/anthropic.svg
+Asset: Anthropic Ivory wordmark
+Official reference: https://www.anthropic.com/news
+Source: https://www.anthropic.com/press-kit
+Official press kit CDN: https://www-cdn.anthropic.com/ae59ca4ca194dac9c9dc3bc78c5829468cb0e8af.zip. Member: Anthropic media resources/Anthropic logos/Anthropic logos/1 Anthropic logo/SVG/Anthropic logo - Ivory.svg. Unmodified.
+Intrinsic dimensions: 590 x 68; viewBox: 0 0 590 68
+SHA-256: 4278eb78a584084a1857acbc2e89c846a0cc7434e68bbb70a63b6df0baa7b255
+
+public/provider-logos/gemini.svg
+Asset: Google Gemini full color symbol and wordmark
+Official reference: https://gemini.google/overview/
+Source: https://gemini.google/overview/
+Official inline header SVG (class _logoImage_1kxsa_154). Standalone foreground color is set to white for the original currentColor wordmark; paths, viewBox, symbol fills and gradients are unchanged.
+Intrinsic dimensions: 288 x 65; viewBox: 0 0 288 65
+SHA-256: d3237feff4ff28d4f2b951d5897631facf0fb2eee5c622d9fae54312622f63f6
+
+public/provider-logos/deepseek.svg
+Asset: DeepSeek full color symbol and wordmark
+Official reference: https://github.com/deepseek-ai/DeepSeek-V3/blob/main/README.md
+Source: https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V2/main/figures/logo.svg
+Unmodified asset linked by the official repository README.
+Intrinsic dimensions: 195.000000 x 41.359375; viewBox: 0 0 195 41.3594
+SHA-256: ac13bdc805820c46bf0faf053aa5d31f72b051794abfe1dd72a682f09de2966b
+
+public/provider-logos/qwen.png
+Asset: Qwen full-color symbol and white wordmark
+Official reference: https://qwen.ai/
+Source: https://img.alicdn.com/imgextra/i2/O1CN01YtEjQm1OG7LuawIS9_!!6000000001677-2-tps-180-48.png
+Official homepage dark-mode full logo. Unmodified PNG.
+Intrinsic dimensions: 180 x 48
+SHA-256: 97c121b7f56a23eae0f8a7366054fe58ee45fa117a04082377a9767893a29fe9
+
+public/provider-logos/mistral.svg
+Asset: Mistral full-color symbol and white wordmark
+Official reference: https://mistral.ai/brand/
+Source: https://mistral.ai/
+Official inline desktop navigation SVG. Standalone foreground color is set to white for the original currentColor wordmark; all paths and pixel colors are unchanged.
+SVG viewBox: 0 0 98 22
+SHA-256: e81e048738fc7602ba56f45457b05dbfdac5b7cf1d5e69e99d89e84bdb7beab7
+
+public/provider-logos/kimi.svg
+Asset: Kimi white wordmark
+Official reference: https://www.kimi.com/
+Source: https://statics.moonshot.cn/kimi-web/assets/c3048479c5e2b-CXv4xMZY.js
+Four original paths from the official login wordmark component, serialized as standalone SVG. The inherited currentColor foreground is set to white; path data and fill attributes are unchanged.
+Intrinsic dimensions: 60 x 20
+SHA-256: 4ab8fb59fdcf97ede66f6e761291cea52c00d52fc22152d0a8ec7e8fbf7358a8
+
+public/provider-logos/minimax.webp
+Asset: MiniMax white horizontal lockup
+Official reference: https://www.minimax.io/
+Source: https://www.minimax.io/assets/logo/minimax-horizontal-white.webp
+Official homepage full logo. Unmodified WebP.
+Intrinsic dimensions: 349 x 128
+SHA-256: 75822b99328197efb3b9bd319f954b55cd42b174117a09dc50eb2175cd990617
+
+Seedance identity correction — 2026-11-12
+Removed the previous BytePlus directory video icon. It is not used as a Seedance brand logo.
+The publisher's project pages render Seedance as a live typographic heading; no separate official symbol was found.
+Marquee uses the project typeface below. Compact provider slots use the actual ByteDance Seed publisher mark.
+
+public/provider-logos/minimax-mark.ico
+Asset: MiniMax official 32x32 app mark, unmodified favicon.
+Source: https://www.minimax.io/favicon.ico
+Used for compact catalog and model cards; marquee retains the official full wordmark.
+
+
+public/provider-logos/bytedance-seed-mark.ico
+Asset: ByteDance Seed publisher mark
+Official reference: https://seed.bytedance.com/en/seedance2_0
+Source: https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/favicon_1/favicon.ico
+Original colored website favicon, used as the publisher mark beside the Seedance model name. Unmodified.
+Intrinsic sizes: 16 x 16, 32 x 32 and 48 x 48.
+SHA-256: 734fbc134328bc3a82165d7bc0b53aef8fd32f26446f7209a388c3a0869f0d2b
+
+public/provider-logos/kimi-mark.png
+Asset: Kimi compact K mark
+Official reference: https://platform.kimi.ai/docs/models
+Source: https://platform.kimi.ai/docs/mintlify-assets/_mintlify/favicons/moonshotai/6rzjGwhLi_bSodW_/_generated/favicon-dark/android-chrome-192x192.png
+Original rounded K mark published as the Kimi API Platform dark-mode favicon. Unmodified.
+Intrinsic dimensions: 192 x 192.
+SHA-256: 5fed6cfa6627713b80d63c14178362ede5df68f4c9849168afc6305383e7d057
+
+public/provider-logos/stack-sans-headline-medium.woff2
+Asset: Stack Sans Headline Medium (Latin) webfont for the Seedance name
+Official reference: https://seed.bytedance.com/en/seedance2_0
+Source: https://fonts.gstatic.com/s/stacksansheadline/v1/1PtFg9jZXvmMnkLnuURbaukKZJTyrDV326uH6mSinjBIwc5fIjFAoAQ.woff2
+The Seedance project uses a live heading, with CSS weight 600 mapped to Stack Sans Headline Medium. Gateway uses the corresponding unmodified Google Fonts weight-500 WOFF2 for the live Seedance label.
+SIL OFL 1.1: https://raw.githubusercontent.com/google/fonts/main/ofl/stacksansheadline/OFL.txt
+License copy: public/provider-logos/stack-sans-headline-OFL.txt
+SHA-256: cbefed66d26b25362880e88ecece7835336c8219fc6befdfdbe6787a01eef789

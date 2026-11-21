@@ -1,0 +1,28 @@
+.cw-split.cw-playground {
+  align-items: stretch;
+}
+.cw-playground > .cw-panel {
+  align-self: stretch;
+  margin-block: 0;
+}
+.cw-playground .cw-prompt-field {
+  flex: 1;
+  grid-template-rows: auto minmax(148px, 1fr);
+}
+.cw-playground .cw-prompt-field textarea {
+  height: 100%;
+}
+.cw-playground .cw-request-output {
+  display: flex;
+  flex-direction: column;
+}
+.cw-playground .cw-json {
+  flex: 1;
+  min-height: 280px;
+}
+.cw-playground .cw-copy {
+  min-height: 36px;
+}
+.cw-filters .cw-time-range {
+  flex: 0 0 auto;
+}

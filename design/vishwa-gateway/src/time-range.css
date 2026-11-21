@@ -1,0 +1,49 @@
+.cw-time-range {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 80px;
+  min-width: 0;
+  color: var(--vg-muted);
+}
+.cw-time-range > select,
+.cw-filters .cw-time-range > select {
+  appearance: none;
+  width: 100%;
+  max-width: 100%;
+  min-height: 36px;
+  border: 1px solid var(--vg-border);
+  border-radius: 9px;
+  background: var(--vg-bg);
+  color: var(--vg-ink);
+  padding: 7px 30px 7px 12px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+.cw-time-range > svg {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--vg-accent);
+}
+.cw-time-range:hover > select {
+  border-color: var(--vg-accent);
+  background: var(--vg-raised);
+}
+.cw-time-range > select:focus-visible {
+  outline: 2px solid var(--vg-accent);
+  outline-offset: 3px;
+}
+.cw-time-range option {
+  background: var(--vg-surface);
+  color: var(--vg-ink);
+}

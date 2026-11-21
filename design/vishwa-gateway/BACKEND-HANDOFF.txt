@@ -1,0 +1,80 @@
+VISHWA GATEWAY — BACKEND HANDOFF
+交付范围：gateway-commerce-ops / Customer + Operations UI
+
+1. 当前交付 / Current implementation
+这是与原 UI 分开的前端流程实现，保留深浅主题与原有品牌样式。
+客户侧：邮箱验证码界面、Google 登录入口、自动建立本地用户、充值金额/自定义金额、Fiat/Crypto、钱包/网络/币种、订单状态、到账后引导、API Key、Playground、用量与费用明细、账单/退款申请、提醒设置。
+运营侧：Overview、Payments、Reconciliation、Customers、Growth、Models & pricing、Audit log、Settings；Finance / Support / Analyst 的界面权限与操作反馈。
+这些操作只改变本浏览器的数据，不会收款、连接钱包、签名、转账、真实退款或调用模型。
+
+2. 数据结构与源码 / Local architecture
+src/commerce.ts 是共享数据源；useCommerce 使用 useSyncExternalStore 更新客户和运营界面。
+数据保存在 localStorage['vishwa-commerce-ops:v1']，同源标签页通过 storage 事件同步。它不是数据库，也不是权限边界；不同设备不会同步。
+登录状态使用 vishwa-commerce-access；当前邮箱使用 vishwa-commerce-email。验证码 482619 是本地访问码，不会发送邮件。记住登录、验证码失效/重发等状态均为前端实现。
+初始客户、订单、增长指标和历史用量为合成数据；模型价格也是设计数据，不代表官方或实际销售报价。当前客户的请求/余额会随本地操作更新。
+amountCents / feeCents / budgetCents 使用 USD cents；balanceMicros / costMicros 使用百万分之一 USD。1 cent = 10,000 micros。inputRate / outputRate 为 USD / 1M tokens。
+当前订单状态：awaiting_payment → confirming / needs_review → credited；另有 failed、cancelled、expired、refund_requested、refunded。后端必须定义合法状态转换，不能信任客户端提交的最终状态。
+
+主要文件：
+- main.tsx、public/signin.html：路由、客户登录入口、全局余额与主题。
+- Checkout.tsx / checkout.css：充值、Fiat 托管收银台占位、Crypto 钱包/网络选择、付款状态。
+- CustomerJourney.tsx：Overview、首用引导、Key 创建/编辑/撤销、一次性密钥展示、Quickstart。
+- CustomerTools.tsx：Playground、Activity、费用拆分、CSV。
+- CustomerBilling.tsx：订单、收据、退款申请、自动充值规则。
+- ConsoleSettings.tsx：账户偏好、提醒阈值、通知和安全设置。
+- Admin.tsx：运营工作台与操作表单。
+- commerce.ts：本地实体与动作；真实接入时保留视图组件，将其替换为 API/query/mutation adapter。
+本目录是独立前端交付，尚未等同于将功能合入 new-api 的生产 web 层；接入时以现有 fork 的 API、用户、额度和渠道模型为准。
+
+3. 已实现界面 → 待接入服务 / Integration map
+
+AUTH / IDENTITY
+已有：邮箱输入、验证码错误/过期/重发、Google 不可用反馈、本地首登建档、保持登录、暂停账户提示。
+待接：Google OAuth/OIDC、邮件 OTP、服务端校验与频率限制、账号合并、真实注册、会话撤销及 30 天安全会话。生产不可保留固定验证码或以 localStorage 时间戳作为认证。
+
+PAYMENT / LEDGER
+已有：金额校验、费率显示、订单编号、等待/确认/审核/失败/过期/到账状态，以及客户账单和财务审核。
+待接：支付提供商托管 checkout/session、服务端创建订单与锁定报价、已签名 webhook 验证、重放去重、异步状态查询、过期任务、幂等入账。
+余额应由服务端账本计算；支付事件、订单、入账、退款及余额变化需要可追溯关联。唯一外部交易号和幂等键必须防止重复到账；状态转换与账本写入应原子执行。
+当前 Finance 审核只是本地工作流。人工确认必须核验实际资金来源、实收金额与订单总额；不能仅凭客户输入的 reference 或界面按钮入账。
+
+CRYPTO / CHAIN
+已有：MetaMask、Phantom、Jupiter、Binance Wallet、OKX Wallet、Bitget Wallet，以及 Base / Ethereum / Solana 和 USDC / USDT 的设计选项。
+待接：实际钱包 SDK、支持的链/资产配置、收款地址/订单关联、精确金额与报价有效期、链上确认、回滚/reorg、网络错误、少付/多付及重复交易处理。
+目前没有真实地址、二维码、汇率或链上监听；选项矩阵是设计占位，不是钱包兼容性承诺。
+
+API KEYS / FIRST REQUEST
+已有：命名、预算、过期时间、模型范围、一次性密钥显示、掩码列表、编辑与撤销确认。
+待接：服务端签发与哈希存储、撤销即时生效、额度/模型限制、请求鉴权和实际限流。vg_local_ 开头的设计密钥不能调用线上 API；原始密钥只在内存中展示一次，未存入本地共享状态。
+Quickstart 使用环境变量占位，不保存或注入用户明文密钥。
+
+INFERENCE / USAGE
+已有：Run walkthrough、运行中/停止/重试、无 Key/余额不足/模型权限/预算错误、结果、token 和费用、请求详情及 CSV。
+待接：真实推理网关、流式响应、取消信号、错误码、request ID、provider 路由、计量与结算。runLocalRequest 只生成固定说明文字和近似 token 数。
+用量应来自服务端计量；结算记录应固定调用时单价。需要明确缓存、推理 token、工具、图像/音频等计费项和失败/取消请求的收费规则。
+
+BILLING / REFUNDS / ALERTS
+已有：订单筛选、状态详情、下载本地收据、退款原因与审核状态；低余额提醒、自动充值配置、通知偏好。
+待接：真实账单/税务发票、退款提供商调用与异步结果、账本冲正、支付方式管理、自动充值任务、邮件/通知投递与失败重试。
+下载收据标注为本地设计记录，不能作为税务发票或真实支付凭证。自动充值规则可保存，但不会执行扣款。
+
+OPERATIONS / RBAC / AUDIT
+已有：Finance / Support / Analyst 的可见操作差异；审核、对账、退款决定、客户资料/状态、费率/模型状态和审计记录。
+待接：员工 SSO、服务端 RBAC/对象授权、敏感操作审计、不可篡改日志、持久化对账任务、支付/账本/银行或链上来源比对。
+当前角色切换只是设计检视工具，不提供实际访问隔离。真实后台不能依赖前端按钮隐藏或本地 staffRole 值。
+Growth 图表基于合成客户/交易，需接入真实注册、激活、付费与留存事件，并确定统计口径。
+
+4. 需产品与财务确认 / Business decisions
+- 商品定义：充值通用 USD credit，还是购买指定模型 Token 包；当前主流程按通用 credit 结算，modelId 表示后续使用意向，不代表独立 Token 配额。
+- 正式模型单价、价格版本、生效时间、缓存/多模态收费、币种精度与舍入。
+- 充值上下限、服务费/税费、订单有效期、支持链/币种、确认数、少付/多付规则。
+- 退款范围、原路退回、手续费退还、已消费余额、部分退款与争议流程；当前设计为整单退款申请和本地审核。
+- 自动充值触发值、单次金额、月度上限、授权方式及失败后行为。
+- Key 月度预算的时区/重置方式、组织成员与 workspace 权限、员工审批职责。
+- 增长指标、收入与充值额的区别、账单时间区间、审计和用量保留期限。
+以上默认值和限制用于验证界面，不应直接作为正式业务规则。
+
+5. 接入验收顺序 / Recommended acceptance sequence
+先打通身份 → 创建订单 → 支付事件 → 幂等账本入账 → Key 签发 → 首次真实请求 → 用量结算与扣费 → 退款冲正。
+随后验证：重复 webhook 不重复入账、失败/取消不误加余额、实收不符进入异常、撤销 Key 即刻失效、余额/预算并发一致、退款不重复执行、不同客户/员工权限隔离。
+最后接入自动充值、通知、对账调度和增长统计。界面状态可复用；生产事实与权限必须由服务端返回。

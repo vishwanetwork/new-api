@@ -1,0 +1,10 @@
+Catalog order — 2026-11-12
+
+Default Popular order: DeepSeek Chat, GPT-4o, Claude Sonnet 4, Kimi K3.1 Pro, MiniMax M2.7, Gemini 2.5 Pro, Qwen3 Coder, Seedance 2.0, Mistral Large.
+
+Basis: recent model-family token usage reported at https://openrouter.ai/rankings, mapped editorially to the editions represented in this UI. This is a manually maintained snapshot, not live per-model rankings or a global market claim. Video model Seedance is not token-comparable with language models and is placed after the text catalog. Mistral is last at the user's request. The existing alphabetical and input/output price sort controls remain available.
+
+Kimi official current model reference: https://platform.kimi.ai/docs/models and https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart ; model ID kimi-k3.1-pro, text/image/video input, text output, OpenAI-compatible upstream https://api.moonshot.ai/v1. Gateway pricing and routing remain unconfigured; no invented prices.
+
+Seedance brand correction is documented in PROVIDER-LOGO-SOURCES.txt.
+

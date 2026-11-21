@@ -426,10 +426,11 @@ For commercial licensing, please contact support@quantumnous.com
  *   - `anthropic`: warm cream surfaces are a brand choice, NOT a primary-mix
  *     derivation (the Anthropic system deliberately uses warm neutrals for
  *     cards/borders rather than tinting them with the clay accent).
- *   - `simple-large`: keeps intentionally neutral, high-contrast surfaces. */
+ *   - `simple-large`: keeps intentionally neutral, high-contrast surfaces.
+ *   - `vishwa`: ships its own neutral graphite surface ladder. */
 [data-theme-preset]:not([data-theme-preset='default']):not(
-  [data-theme-preset='anthropic']
-):not([data-theme-preset='simple-large']) {
+    [data-theme-preset='anthropic']
+  ):not([data-theme-preset='simple-large']):not([data-theme-preset='vishwa']) {
   --card: color-mix(in oklch, var(--primary) 3%, var(--background));
   --popover: color-mix(in oklch, var(--primary) 5%, var(--background));
   --muted: color-mix(in oklch, var(--primary) 7%, var(--background));
@@ -454,7 +455,7 @@ For commercial licensing, please contact support@quantumnous.com
 .dark
   [data-theme-preset]:not([data-theme-preset='default']):not(
     [data-theme-preset='anthropic']
-  ):not([data-theme-preset='simple-large']) {
+  ):not([data-theme-preset='simple-large']):not([data-theme-preset='vishwa']) {
   --card: color-mix(in oklch, var(--primary) 8%, var(--background));
   --popover: color-mix(in oklch, var(--primary) 12%, var(--background));
   --muted: color-mix(in oklch, var(--primary) 12%, var(--background));
@@ -612,6 +613,120 @@ For commercial licensing, please contact support@quantumnous.com
   --skeleton-highlight: oklch(0.41 0.004 60);
 }
 
+/* ── Vishwa ───────────────────────────────────────────────────────────── */
+/*
+ * Vishwa Gateway brand palette, matching the landing page: a neutral
+ * near-black canvas (#0c0d0e) with graphite surfaces, off-white ink and a
+ * silver-white primary. There is no hue accent; cool steel tones carry the
+ * charts. Light mode mirrors it with a white canvas and near-black primary.
+ *
+ * Opted out of the semantic surface bridge: the surface ladder
+ * (canvas → card → raised) is specified by the design, not derived from the
+ * primary. The dark block also matches a `.dark` wrapper inside the body so
+ * always-dark regions (the landing page) get the dark palette in light mode.
+ */
+[data-theme-preset='vishwa'] {
+  --background: #fafaf8;
+  --foreground: #17191b;
+  --card: #ffffff;
+  --card-foreground: #17191b;
+  --popover: #ffffff;
+  --popover-foreground: #17191b;
+
+  --primary: #17191b;
+  --primary-foreground: #ffffff;
+  --secondary: #efefec;
+  --secondary-foreground: #17191b;
+
+  --muted: #f1f1ee;
+  --muted-foreground: #61676a;
+  --accent: #ececea;
+  --accent-foreground: #17191b;
+
+  --destructive: #b23a48;
+  --destructive-foreground: #ffffff;
+  --warning: #9a5a1c;
+  --warning-foreground: #ffffff;
+  --info: #3f6b7d;
+  --info-foreground: #ffffff;
+  --neutral: #61676a;
+  --neutral-foreground: #ffffff;
+
+  --border: #e2e3e0;
+  --input: #d9dad6;
+  --ring: #61676a;
+
+  --chart-1: #17191b;
+  --chart-2: #3f6b7d;
+  --chart-3: #6b7885;
+  --chart-4: #9aa7b0;
+  --chart-5: #8a6a2f;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #17191b;
+  --sidebar-primary: #17191b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ececea;
+  --sidebar-accent-foreground: #17191b;
+  --sidebar-border: #e2e3e0;
+  --sidebar-ring: #61676a;
+
+  --skeleton-base: #efefec;
+  --skeleton-highlight: #f8f8f6;
+
+  --radius: 0.5rem;
+}
+.dark [data-theme-preset='vishwa'],
+[data-theme-preset='vishwa'] .dark {
+  --background: #0c0d0e;
+  --foreground: #f5f5f2;
+  --card: #151617;
+  --card-foreground: #f5f5f2;
+  --popover: #1b1c1e;
+  --popover-foreground: #f5f5f2;
+
+  --primary: #f5f5f2;
+  --primary-foreground: #101112;
+  --secondary: #1e2022;
+  --secondary-foreground: #f5f5f2;
+
+  --muted: #1b1c1e;
+  --muted-foreground: #aeaead;
+  --accent: #232629;
+  --accent-foreground: #f5f5f2;
+
+  --destructive: #e8a1a6;
+  --destructive-foreground: #101112;
+  --warning: #edb983;
+  --warning-foreground: #101112;
+  --info: #9fc6d4;
+  --info-foreground: #101112;
+  --neutral: #aeaead;
+  --neutral-foreground: #101112;
+
+  --border: #ffffff1f;
+  --input: #ffffff2b;
+  --ring: #d2e3e9;
+
+  --chart-1: #d6dadb;
+  --chart-2: #8fb4c4;
+  --chart-3: #9aa7b8;
+  --chart-4: #6f8797;
+  --chart-5: #d8c7a0;
+
+  --sidebar: #101112;
+  --sidebar-foreground: #f5f5f2;
+  --sidebar-primary: #f5f5f2;
+  --sidebar-primary-foreground: #101112;
+  --sidebar-accent: #232629;
+  --sidebar-accent-foreground: #f5f5f2;
+  --sidebar-border: #ffffff17;
+  --sidebar-ring: #d2e3e9;
+
+  --skeleton-base: #1e2022;
+  --skeleton-highlight: #2a2c2f;
+}
+
 /* ── Font axis ────────────────────────────────────────────────────────────
  * Mirrors how `data-theme-radius` overrides a preset's default radius:
  * presets may set `--font-body` (Anthropic → serif), and the user's
@@ -621,6 +736,10 @@ For commercial licensing, please contact support@quantumnous.com
  * font. Explicit Sans also updates `font-sans` utilities to Public Sans. */
 [data-theme-font='system'] {
   --font-body: var(--font-ui-sans);
+}
+/* Vishwa's Auto font is Inter; an explicit Sans or Serif choice still wins. */
+[data-theme-preset='vishwa'][data-theme-font='system'] {
+  --font-ui-sans: var(--font-inter-brand);
 }
 [data-theme-font='sans'] {
   --font-ui-sans: var(--font-public-sans);

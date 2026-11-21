@@ -1,0 +1,42 @@
+.np-seedance-mark {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.np-minimax-mark {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 5px;
+}
+@font-face {
+  font-family: "Seed Project";
+  src: url("../public/provider-logos/stack-sans-headline-medium.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+.lp-landing .lp-provider-seedance .lp-seedance-wordmark {
+  font-family: "Seed Project", Inter, sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #f2f1f7;
+  line-height: 1.2;
+}
+.np-kimi-mark {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+.lp-product-model > code {
+  overflow-wrap: anywhere;
+}
+
+.lp-product-provider.provider-openai {
+  color: #a5e4d1;
+}
+.lp-product-provider.provider-anthropic {
+  color: #e0b4a1;
+}

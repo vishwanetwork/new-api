@@ -1,0 +1,32 @@
+{
+  "name": "vishwa-gateway-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node compile-signin.cjs && rsbuild dev",
+    "build": "node compile-signin.cjs && rsbuild build",
+    "typecheck": "tsgo --noEmit",
+    "lint": "oxlint src tests compile-signin.cjs rsbuild.config.mjs",
+    "test": "bun test tests",
+    "format": "oxfmt --ignore-path .oxfmtignore --write src tests compile-signin.cjs rsbuild.config.mjs package.json tsconfig.json README.md",
+    "format:check": "oxfmt --ignore-path .oxfmtignore --check src tests compile-signin.cjs rsbuild.config.mjs package.json tsconfig.json README.md"
+  },
+  "dependencies": {
+    "@lobehub/icons": "5.22.0",
+    "lucide-react": "1.25.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "2.1.6",
+    "@rsbuild/plugin-react": "2.1.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "oxfmt": "0.72.0",
+    "oxlint": "1.74.0",
+    "tailwindcss": "4.3.3"
+  },
+  "packageManager": "bun@1.4.3"
+}

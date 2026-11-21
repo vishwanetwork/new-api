@@ -1,0 +1,18 @@
+Vishwa landing artwork V3 — 2026-11-12
+
+Generated with the built-in image_gen tool. Source composition preserved; foreground ring and environment rendered as independent layers.
+
+Final assets:
+public/gateway-ring-detail-v3.png — 1254 × 1254, RGBA. Displayed at max 620 CSS pixels (over 2 source pixels per CSS pixel). Transparent aperture and silhouette.
+public/gateway-space-plate-v3.png — 1672 × 941, RGB. Atmospheric background, without foreground structure.
+
+No claim of native 4K resolution. Generator output dimensions were inspected after generation. Foreground uses translation-only motion; no blur or scaling animation.
+
+Final prompt set:
+
+1. Foreground
+Edit the provided hero artwork into a separate HIGH DETAIL FOREGROUND asset for compositing on a website. Extract and carefully re-render ONLY the exact same tilted dark titanium orbital ring gateway, preserving its perspective, orientation, design, silver rim light and restrained lavender inner lighting. Remove ALL space, stars, planet, clouds, horizon and the cyan beam line through the hole. EVERYTHING outside the actual metal ring AND inside its open central aperture must be genuinely transparent alpha. The object should fill about 90% of a square canvas, centered, with a small safe margin, complete ring visible. Render the ring at the maximum supported native resolution, target 2048x2048 or greater, allocate all pixels to the ring instead of empty background. The asset will display at roughly 500px high, so optimize for ultra-sharp 2x/3x screen precision: perfectly smooth mechanical silhouette and aperture, coherent machined rails, clearly resolved tiny seams, fasteners, panel boundaries and metal finish, no melting details, no blur or noise. Match the supplied source’s physical design and light direction exactly. No outer background glow, no drop shadow, no giant transparent empty border. Do not add text or markings. Return a PNG with transparent background.
+
+2. Background
+Edit the provided wide image into the BACKGROUND PLATE for the same website. REMOVE the large metal ring orbital gateway COMPLETELY. Fill the area where it was with continuous dark space above and matching planet/cloud texture below. Remove its shadow/reflection. Preserve the wide composition and the planet horizon position, violet atmospheric rim, cyan diagonal light ray, left dark negative space, fine distant stars, and beautifully sharp high-definition cloud structures. Keep the plane perspective and colors. The result is ONLY the empty space/planet environment, no ring, no structure, no objects in front of the planet. Clean detailed cinematic background at the highest native resolution supported, ideally 3840x2160. No text, no UI, no logos.
+
