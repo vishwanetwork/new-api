@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Check the running release.
 #   verify.sh            ask the Service from inside the cluster
-#   verify.sh --public   ask https://ai.gateway.vishwalab.com
+#   verify.sh --public   ask https://gateway.opennextlab.ai
 set -euo pipefail
 
 NAMESPACE=opennext
-HOST=ai.gateway.vishwalab.com
+HOST=gateway.opennextlab.ai
 
 if [ "${1:-}" = "--public" ]; then
   body="$(curl -fsS --max-time 20 "https://${HOST}/api/status")"

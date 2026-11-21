@@ -1,5 +1,5 @@
 # Token Factory (this repository's gateway) on the EKS cluster `vishwa`,
-# namespace `opennext`, served at https://ai.gateway.vishwalab.com.
+# namespace `opennext`, served at https://gateway.opennextlab.ai.
 #
 # Applied by deploy/k8s/scripts/deploy.sh, which substitutes IMAGE_PLACEHOLDER.
 # Needs two Secrets that are created once by hand and never stored in Git:
@@ -128,14 +128,13 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
-    # ACM certificate for ai.gateway.vishwalab.com (*.vishwalab.com does not
-    # cover a two-level name).
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:856805822428:certificate/2b9eaef1-7065-46dc-8d0d-c708ef1519ad
+    # ACM wildcard certificate for *.opennextlab.ai.
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-west-2:856805822428:certificate/9c942963-cd94-4d12-b9bb-2a98b3163271
     alb.ingress.kubernetes.io/healthcheck-path: /api/status
 spec:
   ingressClassName: alb
   rules:
-    - host: ai.gateway.vishwalab.com
+    - host: gateway.opennextlab.ai
       http:
         paths:
           - path: /
